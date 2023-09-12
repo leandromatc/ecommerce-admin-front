@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colours variables */
+  --clr-primary: #532e1c;
+  --clr-secondary: #c5a880;
+  --clr-lighter: #f3f1eb;
+  --clr-secondary-light: #f2ead3;
+  --clr-third: #979180;
+  --clr-dark: #0f0f0f;
+  --clr-light: #fcfcfc;
+  --clr-white: #fff;
+  --clr-delivered: #435334;
+  --clr-delivered-light: #e1f1d0;
+  --clr-pending: #dbab52;
+  --clr-pending-light: #fffadd;
+  --clr-cancelled: #d21312;
+  --clr-cancelled-light: #f8bfbf;
+  /* Font family */
+  --font-family: "Inter", sans-serif;
+  /* Transition default */
+  --transition-default: all 200ms ease-in-out;
+  /* Shadow default */
+  --shadow-default: 0.05rem 0.05rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+body {
+  background-color: var(--clr-light);
+  font-family: var(--font-family);
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+.dashboard {
+  display: flex;
+}
+
+.main-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.8rem;
+  font-weight: 400;
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary-light);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow-default);
+  transition: var(--transition-default);
+}
+
+.main-button:hover {
+  background-color: transparent;
+  color: var(--clr-primary);
+  border: 1px solid var(--clr-primary);
+  border-color: var(--clr-primary);
+}
+
+.btn-icon {
+  margin-right: 0.2rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.btn-status {
+  display: block;
+  padding: 0.2rem 0.6rem;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  text-align: center;
+}
+.delivered {
+  background-color: var(--clr-delivered-light);
+  color: var(--clr-delivered);
+}
+.pending {
+  background-color: var(--clr-pending-light);
+  color: var(--clr-pending);
+}
+.cancelled {
+  background-color: var(--clr-cancelled-light);
+  color: var(--clr-cancelled);
+}
