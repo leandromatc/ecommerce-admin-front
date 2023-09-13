@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <aside className="nav-container">
       <div>
-        <h2 className="logo-title">Dopios.</h2>
+        <h2 className="logo-title">Doppios.</h2>
         <ul>
           <li className="nav-item">
             <NavLink to={`/`} className="nav-link">
