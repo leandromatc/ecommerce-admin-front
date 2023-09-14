@@ -24,37 +24,36 @@ function ProductsAdmin() {
     product && (
       <div className="container-fluid main-container">
         <div className="container d-flex justify-content-center align-items-center mb-3 data-container">
-          <div className="row g-0 mt-5">
-            <div className="col-6">
-              <img
-                src={product.image}
-                style={{
-                  maxHeight: "100%",
-                  width: "100%",
-                  objectFit: "cover",
-                }}
-              />
-            </div>
-            <div className="col-6 cardBody">
-              <div className="card-body p-5">
-                <h3 className="text-uppercase fw-bold">{product.name}</h3>
-                <p className="card-text mt-3 fs-2 priceText fst-italic">
-                  $USD: {product.price}
-                </p>
-                <p className="card-text">{product.description}</p>
-                <hr className="mt-5" />
-                <p>CATEGORY: {product.category}</p>
-                <p className="text-body-secondary ">STOCK: {product.stock}</p>
-                <hr className="mt-2" />
-                <div className="d-flex justify-content-end mt-5 ">
-                  <a
-                    href="#"
-                    className="text-decoration-none d-flex align-items-center px-4 py-2 addToCartButton"
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">CATEGORY</th>
+                <th scope="col"> stock</th>
+                <th scope="col">stock</th>
+                <th scope="col">Image</th>
+                <th scope="col">top</th>
+              </tr>
+              {console.log("product", product)}
+            </thead>
+            <tbody>
+              {product.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.name}</td>
+                  <td>{item.price}</td>
+                  <td>{item.description}</td>
+                  <td>{item.category}</td>
+                  <td>{item.stock}</td>
+                  <td>
+                    <img src={item.image} />
+                  </td>
+                  <td>{item.top}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     )
