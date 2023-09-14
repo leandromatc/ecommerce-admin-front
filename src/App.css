@@ -32,7 +32,7 @@
 
 body {
   background-color: var(--clr-light);
-  font-family: var(--font-family);
+  font-family: var(--font-family) !important;
 }
 
 ul {
@@ -52,13 +52,14 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 1.8rem;
+  padding: 0.8rem 1rem;
   font-weight: 400;
   background-color: var(--clr-primary);
+  border: 1px solid var(--clr-secondary-light);
   color: var(--clr-secondary-light);
+  font-weight: 600;
   border-radius: 0.4rem;
   cursor: pointer;
-  border: none;
   box-shadow: var(--shadow-default);
   transition: var(--transition-default);
 }
@@ -94,4 +95,9 @@ a {
 .cancelled {
   background-color: var(--clr-cancelled-light);
   color: var(--clr-cancelled);
+}
+
+.content {
+  margin: 2rem;
+  width: 100%;
 }
