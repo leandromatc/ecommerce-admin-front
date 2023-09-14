@@ -54,7 +54,7 @@ function UserChart() {
           options={chartData.options}
           series={chartData.series}
           type="bar"
-          width="800"
+          width="100%"
         />
       </div>
     )

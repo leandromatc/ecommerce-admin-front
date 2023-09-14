@@ -22,7 +22,7 @@ function VisitorsChart() {
         options={chartData.options}
         series={chartData.series}
         type="radialBar"
-        width="600"
+        width="100%"
       />
     </div>
   );
