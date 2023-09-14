@@ -1,0 +1,9 @@
+crud  - productos
+       -Users
+       -ordenes -estado
+             -entregado
+
+login Admin (admin Controlers)
+jwt
+persistencia
+*** poner en el user algun <a link> para busacr ordenes  a futuro</a> 
