@@ -1,18 +1,10 @@
-.content {
-  margin: 2rem;
-  width: 100%;
-}
 .header {
   display: flex;
-  justify-content: space-between;
   width: 100%;
 }
 
 .statistics {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
   margin-top: 2rem;
 }
 
@@ -32,13 +24,14 @@
 }
 
 .statistics-icon {
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   margin-right: 1rem;
   color: var(--clr-primary);
 }
 .statistics-number {
   font-size: 2rem;
+  font-weight: 600;
 }
 .charts-container {
   display: grid;
@@ -58,6 +51,7 @@
 .h5-title {
   font-size: 1rem;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 #latest-orders {

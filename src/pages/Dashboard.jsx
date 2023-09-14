@@ -13,32 +13,34 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="content">
-        <div className="header">
-          <div>
-            <h3>Hello, Juan Pérez</h3>
+        <div className="row header d-flex align-items-center">
+          <div className="col-6">
+            <h3 className="m-0 fw-bold">Hello, Juan Pérez 👋</h3>
             <small>This are the statistics for today!</small>
           </div>
-          <button className="main-button">
-            <MdOutlineAddCircleOutline className="btn-icon" />
-            Add product
-          </button>
+          <div className="col-6 d-flex justify-content-end">
+            <button className="main-button">
+              <MdOutlineAddCircleOutline className="btn-icon" />
+              Add product
+            </button>
+          </div>
         </div>
-        <div className="statistics">
-          <div className="statistics-card">
+        <div className="row statistics gap-3">
+          <div className="col statistics-card">
             <BiSolidDollarCircle className="statistics-icon" />
             <div>
               <small>Total sales</small>
-              <h4 className="statistics-number">$1,120,000,000</h4>
+              <h4 className="statistics-number">$1,120</h4>
             </div>
           </div>
-          <div className="statistics-card">
+          <div className="col statistics-card">
             <BiSolidCart className="statistics-icon" />
             <div>
               <small>Total orders</small>
               <h4 className="statistics-number">124</h4>
             </div>
           </div>
-          <div className="statistics-card">
+          <div className="col statistics-card">
             <BiSolidPurchaseTag className="statistics-icon" />
             <div>
               <small>Total products</small>
@@ -46,69 +48,60 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="charts-container">
-          <div className="chart">
+        <div className="charts-container row">
+          <div className=" chart">
             <h5 className="h5-title">Users</h5>
             <UserChart />
           </div>
-          <div className="chart">
+          <div className="w-100 col-xxl-6 chart">
             <h5 className="h5-title">Visitors</h5>
             <VisitorsChart />
           </div>
         </div>
-        <section id="latest-orders">
+        <section id="latest-orders" className="row">
           <h5 className="h5-title">Latest orders</h5>
-          <table className="content-table">
-            <tbody className="table-body">
+
+          <table className="table">
+            <thead>
               <tr>
-                <td>1434</td>
-                <td>Juan Pérez</td>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Price</th>
+                <th scope="col">Order status</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1234</td>
+                <td>Ringo</td>
                 <td>mail@mail.com</td>
                 <td>$2,5</td>
                 <td>
                   <span className="btn-status delivered">Delivered</span>
                 </td>
-                <td>12.09.2023</td>
+                <td>12.12.2023</td>
               </tr>
               <tr>
-                <td>1434</td>
-                <td>Juan Pérez</td>
-                <td>mail@mail.com</td>
-                <td>$2,5</td>
-                <td>
-                  <span className="btn-status delivered">Delivered</span>
-                </td>
-                <td>12.09.2023</td>
-              </tr>
-              <tr>
-                <td>1434</td>
-                <td>Juan Pérez</td>
-                <td>mail@mail.com</td>
-                <td>$2,5</td>
-                <td>
-                  <span className="btn-status pending">Pending</span>
-                </td>
-                <td>12.09.2023</td>
-              </tr>
-              <tr>
-                <td>1434</td>
-                <td>Juan Pérez</td>
-                <td>mail@mail.com</td>
-                <td>$2,5</td>
-                <td>
-                  <span className="btn-status delivered">Delivered</span>
-                </td>
-                <td>12.09.2023</td>
-              </tr>
-              <tr>
-                <td>1434</td>
-                <td>Juan Pérez</td>
+                <td>1234</td>
+                <td>John</td>
                 <td>mail@mail.com</td>
                 <td>$2,5</td>
                 <td>
                   <span className="btn-status cancelled">Cancelled</span>
                 </td>
-                <td>12.09.2023</td>
+                <td>12.12.2023</td>
+              </tr>
+              <tr>
+                <td>1234</td>
+                <td>George</td>
+                <td>mail@mail.com</td>
+                <td>$2,5</td>
+                <td>
+                  <span className="btn-status pending">Pending</span>
+                </td>
+                <td>12.12.2023</td>
               </tr>
             </tbody>
           </table>
