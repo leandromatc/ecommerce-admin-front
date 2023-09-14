@@ -34,7 +34,7 @@ function LoginAdmin() {
       );
 
       // Haz algo con la respuesta, como mostrarla en la consola
-      console.log(response.data);
+      console.log(response);
       setFormData({
         username: "",
         password: "",
@@ -59,7 +59,7 @@ function LoginAdmin() {
                   </div>
                   <form onSubmit={sendForm} className="row g-3">
                     <div className="col-5">
-                      <label htmlFor="firstName" className="form-label">
+                      <label htmlFor="username" className="form-label">
                         Username :
                       </label>
                       <input

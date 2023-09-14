@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
 
 import axios from "axios";
-import { useLocation } from "react-router-dom";
 
 function ProductsAdmin() {
   const [product, setProduct] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
     const getProduct = async () => {
       const response = await axios({
-        method: "GET",
-        url: `http://localhost:3000/admin/products/`,
+        method: "get",
+        url: `http://localhost:3000/admin/products`,
         /* headers: {
           Authorization: "Bearer " + (user && user.token),
         }, */
       });
-      console.log(response.data.products);
-      response && setProduct(response.data.products);
+      console.log(response.data);
+      response && setProduct(response.data);
     };
     getProduct();
   }, []);
