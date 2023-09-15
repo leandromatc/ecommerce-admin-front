@@ -24,15 +24,15 @@ function ProductsAdmin() {
     product && (
       <div className="container-fluid main-container">
         <div className="container d-flex justify-content-center align-items-center mb-3 data-container">
-          <table className="table">
+          <table className="table text-center border rounded shadow">
             <thead>
               <tr>
-                <th scope="col">name</th>
+                <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Description</th>
-                <th scope="col">CATEGORY</th>
-                <th scope="col"> stock</th>
-                <th scope="col">top</th>
+                <th scope="col">Category</th>
+                <th scope="col"> Stock</th>
+                <th scope="col">Top</th>
               </tr>
               {console.log("product", product)}
             </thead>
