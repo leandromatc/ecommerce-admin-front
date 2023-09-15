@@ -32,8 +32,6 @@ function ProductsAdmin() {
                 <th scope="col">Description</th>
                 <th scope="col">CATEGORY</th>
                 <th scope="col"> stock</th>
-                <th scope="col">stock</th>
-                <th scope="col">Image</th>
                 <th scope="col">top</th>
               </tr>
               {console.log("product", product)}
@@ -46,10 +44,7 @@ function ProductsAdmin() {
                   <td>{item.description}</td>
                   <td>{item.category}</td>
                   <td>{item.stock}</td>
-                  <td>
-                    <img src={item.image} />
-                  </td>
-                  <td>{item.top}</td>
+                  <td>{item.top === true ? "SI" : "NO"}</td>
                 </tr>
               ))}
             </tbody>
