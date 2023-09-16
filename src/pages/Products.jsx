@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Users.css";
 import axios from "axios";
-import { AiFillDelete, AiOutlinePlusCircle } from "react-icons/ai";
+import {
+  AiFillDelete,
+  AiOutlinePlusCircle,
+  AiFillPlusCircle,
+  AiFillMinusCircle,
+} from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -13,12 +18,17 @@ function Products() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const userDelete = async (productId) => {
+  const productDelete = async (productId) => {
     const response = await axios({
-      method: "DELETE",
-      url: `${import.meta.env.VITE_MAIN_URL}/product/${productId}`,
+      method: "delete",
+      url: `${import.meta.env.VITE_MAIN_URL}/admin/Product/${productId}`,
     });
-    setProduct(product.filter((pro) => pro._id !== productId));
+  };
+  const productAdd = async (productId) => {
+    const response = await axios({
+      method: "get",
+      url: `${import.meta.env.VITE_MAIN_URL}/admin/store/Product/${productId}`,
+    });
   };
 
   useEffect(() => {
@@ -30,7 +40,8 @@ function Products() {
       setProduct(response.data);
     };
     getProduct();
-  }, []);
+  }, [productDelete]);
+
   return (
     product && (
       <section id="users">
@@ -52,7 +63,6 @@ function Products() {
                 <th scope="col"> Stock</th>
                 <th scope="col">Top</th>
               </tr>
-              {console.log("product", product)}
             </thead>
             <tbody>
               {product.map((item) => (
@@ -65,9 +75,14 @@ function Products() {
                   <td>{item.top === true ? "SI" : "NO"}</td>
                   <td>
                     <MdEdit className="me-4 action-icon" onClick={handleShow} />
-                    <AiFillDelete
+
+                    <AiFillPlusCircle
+                      className="action-icon create-icon"
+                      onClick={() => productAdd(item._id)}
+                    />
+                    <AiFillMinusCircle
                       className="action-icon delete-icon"
-                      onClick={() => userDelete(item._id)}
+                      onClick={() => productDelete(item._id)}
                     />
                   </td>
                 </tr>

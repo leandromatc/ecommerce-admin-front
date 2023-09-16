@@ -5,7 +5,6 @@ import { AiFillDelete, AiOutlinePlusCircle } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { ToastContainer, toast } from "react-toastify";
 
 function Users() {
   const [users, setUsers] = useState(null);
@@ -15,9 +14,9 @@ function Users() {
   const handleShow = () => setShow(true);
 
   const userDelete = async (userId) => {
-    const response = await axios({
+    await axios({
       method: "DELETE",
-      url: `${import.meta.env.VITE_MAIN_URL}/users/${userId}`,
+      url: `${import.meta.env.VITE_MAIN_URL}/Users/${userId}`,
     });
     setUsers(users.filter((user) => user._id !== userId));
   };
