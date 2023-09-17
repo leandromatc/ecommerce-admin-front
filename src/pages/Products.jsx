@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Users.css";
 import axios from "axios";
-import {
-  AiFillDelete,
-  AiOutlinePlusCircle,
-  AiFillPlusCircle,
-  AiFillMinusCircle,
-} from "react-icons/ai";
+import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import FormUs from "../components/FormUs";
 
 function Products() {
   const [product, setProduct] = useState(null);
@@ -19,13 +15,14 @@ function Products() {
   const handleShow = () => setShow(true);
 
   const productDelete = async (productId) => {
-    const response = await axios({
+    await axios({
       method: "delete",
       url: `${import.meta.env.VITE_MAIN_URL}/admin/Product/${productId}`,
     });
   };
+
   const productAdd = async (productId) => {
-    const response = await axios({
+    await axios({
       method: "get",
       url: `${import.meta.env.VITE_MAIN_URL}/admin/store/Product/${productId}`,
     });
@@ -47,10 +44,8 @@ function Products() {
       <section id="users">
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Users</h2>
-          <button className=" main-button">
-            <AiOutlinePlusCircle className="me-1" />
-            New product
-          </button>
+
+          {<FormUs className="me-1" />}
         </div>
         <div className="row ms-4 chart">
           <table className="table text-center border rounded shadow">
