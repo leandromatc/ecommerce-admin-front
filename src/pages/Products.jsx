@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import "./Users.css";
 import axios from "axios";
-import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
-import { MdEdit } from "react-icons/md";
+import {
+  AiFillPlusCircle,
+  AiFillMinusCircle,
+  AiFillDelete,
+} from "react-icons/ai";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import FormUs from "../components/FormUs";
+import FormUp from "../components/FormUp";
 
 function Products() {
   const [product, setProduct] = useState(null);
   const [show, setShow] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -28,6 +33,21 @@ function Products() {
     });
   };
 
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  useEffect(() => {
+    closeModal();
+  }, []);
+  useEffect(() => {
+    openModal();
+  }, []);
+
   useEffect(() => {
     const getProduct = async () => {
       const response = await axios({
@@ -43,7 +63,7 @@ function Products() {
     product && (
       <section id="users">
         <div className="p-4 d-flex justify-content-between align-items-center">
-          <h2 className="fw-bold m-0">Users</h2>
+          <h2 className="fw-bold m-0">Products</h2>
 
           {<FormUs className="me-1" />}
         </div>
@@ -60,8 +80,8 @@ function Products() {
               </tr>
             </thead>
             <tbody>
-              {product.map((item) => (
-                <tr key={item.id}>
+              {product.map((item, id) => (
+                <tr key={id}>
                   <td>{item.name}</td>
                   <td>{item.price}</td>
                   <td>{item.description}</td>
@@ -69,7 +89,19 @@ function Products() {
                   <td>{item.stock}</td>
                   <td>{item.top === true ? "SI" : "NO"}</td>
                   <td>
-                    <MdEdit className="me-4 action-icon" onClick={handleShow} />
+                    <AiFillDelete
+                      className="me-4 action-icon"
+                      onClick={handleShow}
+                    />
+
+                    {
+                      <FormUp
+                        onClick={openModal}
+                        isOpen={modalIsOpen}
+                        onClose={closeModal}
+                        item={item}
+                      />
+                    }
 
                     <AiFillPlusCircle
                       className="action-icon create-icon"
