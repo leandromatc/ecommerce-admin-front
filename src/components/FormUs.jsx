@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import axios from "axios";
+//import fs from "fs";
 
 function FormUs() {
   const [showModal, setShowModal] = useState(false);
@@ -9,6 +11,7 @@ function FormUs() {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState(null);
   const [stock, setStock] = useState("");
+  const [category, setCategory] = useState("");
   const [top, setTop] = useState("");
 
   const handleClose = () => setShowModal(false);
@@ -17,19 +20,43 @@ function FormUs() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Realizar acciones con los datos, por ejemplo, enviarlos a un servidor
     console.log("Nombre:", name);
     console.log("Price:", price);
     console.log("Foto:", image);
     console.log("description:", description);
     console.log("Stock:", stock);
+    console.log("Stock:", category);
     console.log("Top:", top);
+    sendInfo();
     handleClose();
   };
 
   const handleFotoChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
+  };
+
+  //mandar nuevo producto a bd
+  const sendInfo = async () => {
+    const sendInfo = {
+      name,
+      price,
+      description,
+      category,
+      top,
+      image,
+      stock,
+    };
+
+    const response = await axios({
+      method: "post",
+      url: `${import.meta.env.VITE_MAIN_URL}/admin/create/Product`,
+      data: sendInfo,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    console.log(response.data);
   };
 
   return (
@@ -90,13 +117,22 @@ function FormUs() {
                 required
               />
             </Form.Group>
+            <Form.Group controlId="category">
+              <Form.Label>Category :</Form.Label>
+              <Form.Control
+                type="text"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                required
+              />
+            </Form.Group>
 
             <Form.Group controlId="image">
               <Form.Label>Foto :</Form.Label>
               <Form.Control
                 type="file"
                 onChange={handleFotoChange}
-                accept="image/*"
+                accept="imgs/product/*"
                 required
               />
             </Form.Group>

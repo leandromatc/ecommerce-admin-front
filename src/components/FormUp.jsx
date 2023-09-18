@@ -145,7 +145,7 @@ function FormUp(item) {
                 <Form.Control
                   type="files"
                   value={image}
-                  onChange={(e) => setImage(e.target.value)}
+                  onChange={(e) => setImage(e.target.files[0])}
                 />
               </Form.Group>
               <Button variant="primary" type="submit" onClick={handledInfo}>
