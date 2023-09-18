@@ -4,8 +4,6 @@ import Dashboard from "./Dashboard";
 import "./Home.css";
 
 function Home() {
-  const params = useParams();
-  console.log(params);
   return (
     <div className="home">
       <div className="home-nav">

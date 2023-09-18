@@ -71,6 +71,12 @@ a {
   border-color: var(--clr-primary);
 }
 
+.close-button {
+  background-color: var(--clr-third);
+  border: 1px solid var(--clr-third);
+  color: var(--clr-primary);
+}
+
 .btn-icon {
   margin-right: 0.2rem;
   height: 1rem;

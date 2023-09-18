@@ -3,29 +3,22 @@ import "./Users.css";
 import axios from "axios";
 import { AiFillDelete, AiOutlinePlusCircle } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import ModalDelete from "./ModalDelete";
 
 function Users() {
   const [users, setUsers] = useState(null);
   const [show, setShow] = useState(false);
+  const [id, setId] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const userDelete = async (userId) => {
-    await axios({
-      method: "DELETE",
-      url: `${import.meta.env.VITE_MAIN_URL}/Users/${userId}`,
-    });
-    setUsers(users.filter((user) => user._id !== userId));
-  };
 
   useEffect(() => {
     const getUsers = async () => {
       const response = await axios({
         method: "get",
-        url: `${import.meta.env.VITE_MAIN_URL}/users`,
+        url: `${import.meta.env.VITE_API_URL}/users`,
       });
       setUsers(response.data);
     };
@@ -36,10 +29,12 @@ function Users() {
       <section id="users">
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Users</h2>
-          <button className=" main-button">
-            <AiOutlinePlusCircle className="me-1" />
-            New user
-          </button>
+          <Link to={`new`}>
+            <button className=" main-button">
+              <AiOutlinePlusCircle className="me-1" />
+              New user
+            </button>
+          </Link>
         </div>
         <div className="row ms-4 chart">
           <table className="table">
@@ -62,10 +57,15 @@ function Users() {
                   </td>
                   <td>{user.email}</td>
                   <td>
-                    <MdEdit className="me-4 action-icon" onClick={handleShow} />
+                    <Link to={`/users/${user._id}`}>
+                      <MdEdit className="me-4 action-icon" />
+                    </Link>
                     <AiFillDelete
                       className="action-icon delete-icon"
-                      onClick={() => userDelete(user._id)}
+                      onClick={() => {
+                        handleShow();
+                        setId(user._id);
+                      }}
                     />
                   </td>
                 </tr>
@@ -73,25 +73,14 @@ function Users() {
             </tbody>
           </table>
         </div>
-        <Modal
+        <ModalDelete
+          setShow={setShow}
           show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Delete user</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>Are you sure?</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary">Understood</Button>
-          </Modal.Footer>
-        </Modal>
+          handleClose={handleClose}
+          setUsers={setUsers}
+          users={users}
+          id={id}
+        />
       </section>
     )
   );

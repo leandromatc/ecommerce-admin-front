@@ -22,14 +22,14 @@ function Products() {
   const productDelete = async (productId) => {
     await axios({
       method: "delete",
-      url: `${import.meta.env.VITE_MAIN_URL}/admin/Product/${productId}`,
+      url: `${import.meta.env.VITE_API_URL}/admin/Product/${productId}`,
     });
   };
 
   const productAdd = async (productId) => {
     await axios({
       method: "get",
-      url: `${import.meta.env.VITE_MAIN_URL}/admin/store/Product/${productId}`,
+      url: `${import.meta.env.VITE_API_URL}/admin/store/Product/${productId}`,
     });
   };
 
@@ -52,7 +52,7 @@ function Products() {
     const getProduct = async () => {
       const response = await axios({
         method: "get",
-        url: `${import.meta.env.VITE_MAIN_URL}/admin/Product`,
+        url: `${import.meta.env.VITE_API_URL}/admin/Product`,
       });
       setProduct(response.data);
     };

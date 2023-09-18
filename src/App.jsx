@@ -7,6 +7,8 @@ import Users from "./pages/Users";
 import Home from "./pages/Home";
 import ProductsAdmin from "./components/ProductsAdmin";
 import LoginAdmin from "./pages/LoginAdmin";
+import UserEdit from "./pages/UserEdit";
+import NewUser from "./pages/NewUser";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="products" element={<Products />} />
         <Route path="orders" element={<Orders />} />
         <Route path="users" element={<Users />} />
+        <Route path="users/:user" element={<UserEdit />} />
+        <Route path="users/new" element={<NewUser />} />
         <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/product" element={<ProductsAdmin />} />
       </Route>
