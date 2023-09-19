@@ -22,6 +22,7 @@ function App() {
         <Route path="users/new" element={<NewUser />} />
         <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/product" element={<ProductsAdmin />} />
+     
       </Route>
     </Routes>
   );
