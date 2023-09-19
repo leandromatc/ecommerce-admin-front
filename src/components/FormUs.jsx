@@ -9,7 +9,7 @@ function FormUs() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [description, setDescription] = useState("");
   const [stock, setStock] = useState("");
   const [category, setCategory] = useState("");
   const [top, setTop] = useState("");
@@ -50,7 +50,7 @@ function FormUs() {
 
     const response = await axios({
       method: "post",
-      url: `${import.meta.env.VITE_MAIN_URL}/admin/create/Product`,
+      url: `http://localhost:3000/admin/create/Product`,
       data: sendInfo,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -109,7 +109,7 @@ function FormUs() {
               />
             </Form.Group>
             <Form.Group controlId="top">
-              <Form.Label>Pop :</Form.Label>
+              <Form.Label>Top (si o no ):</Form.Label>
               <Form.Control
                 type="boolean"
                 value={top}
