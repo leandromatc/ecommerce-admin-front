@@ -13,6 +13,7 @@ function FormUs() {
   const [stock, setStock] = useState("");
   const [category, setCategory] = useState("");
   const [top, setTop] = useState("");
+  const [slug, setSlug] = useState("");
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -27,6 +28,7 @@ function FormUs() {
     console.log("Stock:", stock);
     console.log("Stock:", category);
     console.log("Top:", top);
+    console.log("Slug:", slug);
     sendInfo();
     handleClose();
   };
@@ -44,6 +46,7 @@ function FormUs() {
       description,
       category,
       top,
+      slug,
       image,
       stock,
     };
@@ -123,6 +126,15 @@ function FormUs() {
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="category">
+              <Form.Label>Slug :</Form.Label>
+              <Form.Control
+                type="text"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)}
                 required
               />
             </Form.Group>

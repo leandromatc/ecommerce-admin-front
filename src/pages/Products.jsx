@@ -33,6 +33,10 @@ function Products() {
     });
   };
 
+  // const handleDelete = () => {
+  //   productDelete();
+  // };
+
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -41,6 +45,9 @@ function Products() {
     setModalIsOpen(false);
   };
 
+  // useEffect(() => {
+  //   productDelete();
+  // }, []);
   useEffect(() => {
     closeModal();
   }, []);
@@ -77,6 +84,7 @@ function Products() {
                 <th scope="col">Category</th>
                 <th scope="col"> Stock</th>
                 <th scope="col">Top</th>
+                <th scope="col">Slug</th>
               </tr>
             </thead>
             <tbody>
@@ -88,6 +96,7 @@ function Products() {
                   <td>{item.category}</td>
                   <td>{item.stock}</td>
                   <td>{item.top === true ? "SI" : "NO"}</td>
+                  <td>{item.slug}</td>
                   <td>
                     <AiFillDelete
                       className="me-4 action-icon"
@@ -133,7 +142,7 @@ function Products() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary">Understood</Button>
+            <Button>Understood</Button>
           </Modal.Footer>
         </Modal>
       </section>

@@ -19,6 +19,7 @@ function FormUp(item) {
   const [category, setCategory] = useState(dataUser.item.category);
   const [top, setTop] = useState(dataUser.item.top);
   const [stock, setStock] = useState(dataUser.item.stock);
+  const [slug, setSlug] = useState(dataUser.item.stock);
   const [image, setImage] = useState(dataUser.item.image);
 
   const handleClose = () => setShowModal(false);
@@ -106,6 +107,16 @@ function FormUp(item) {
                   }
                 />
               </Form.Group>
+              <Form.Group controlId="description">
+                <Form.Label>Slug :</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={slug}
+                  onChange={(e) =>
+                    setSlug(e.target.value === "" ? slug : e.target.value)
+                  }
+                />
+              </Form.Group>
 
               <Form.Group controlId="top">
                 <Form.Label>Top :</Form.Label>
@@ -118,7 +129,7 @@ function FormUp(item) {
                 />
               </Form.Group>
               <Form.Group controlId="category">
-                <Form.Label>Price :</Form.Label>
+                <Form.Label>Category :</Form.Label>
                 <Form.Control
                   type="text"
                   value={category}
