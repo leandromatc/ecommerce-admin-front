@@ -53,7 +53,7 @@ function FormUp(item) {
 
     const response = await axios({
       method: "post",
-      url: `http://localhost:3000/admin/Product/${id}`,
+      url: `${import.meta.env.VITE_API_URL}/admin/Product/${id}`,
       data: { sendInfo },
     });
     console.log(response.data);
