@@ -5,6 +5,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link, NavLink } from "react-router-dom";
 import ModalOrder from "./ModalOrder";
 import Form from "react-bootstrap/Form";
+import { format } from "date-fns";
 
 function Orders() {
   const [orders, setOrders] = useState(null);
@@ -13,6 +14,13 @@ function Orders() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleStatusChange = async (status, id) => {
+    await axios({
+      method: "patch",
+      url: `${import.meta.env.VITE_API_URL}/orders/${id}`,
+      data: { status },
+    });
+  };
 
   useEffect(() => {
     const getOrders = async () => {
@@ -24,6 +32,7 @@ function Orders() {
     };
     getOrders();
   }, []);
+
   return (
     orders && (
       <section id="users">
@@ -53,7 +62,11 @@ function Orders() {
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.user}</td>
-                  <td>{order.createdAt}</td>
+                  <td>
+                    {format(new Date(order.createdAt), "MMMM dd, yyyy"
+                   
+                    )}
+                  </td>
                   <td>
                     {" "}
                     <NavLink
@@ -73,10 +86,16 @@ function Orders() {
                   </td>
                   <td>{order.totalPrice}</td>
                   <td>
-                    <Form.Select aria-label="Default select example">
-                      <option value="1">Pending</option>
-                      <option value="2">Delivered</option>
-                      <option value="3">Cancelled</option>
+                    <Form.Select
+                      defaultValue={order.status}
+                      onChange={(event) =>
+                        handleStatusChange(event.target.value, order._id)
+                      }
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="preparing">Preparing</option>
+                      <option value="on-its-way">On its way</option>
+                      <option value="delivered">Delivered</option>
                     </Form.Select>
                   </td>
                 </tr>
