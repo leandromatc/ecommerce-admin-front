@@ -9,10 +9,11 @@ function FormUs() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [description, setDescription] = useState("");
   const [stock, setStock] = useState("");
   const [category, setCategory] = useState("");
   const [top, setTop] = useState("");
+  const [slug, setSlug] = useState("");
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -27,6 +28,7 @@ function FormUs() {
     console.log("Stock:", stock);
     console.log("Stock:", category);
     console.log("Top:", top);
+    console.log("Slug:", slug);
     sendInfo();
     handleClose();
   };
@@ -44,13 +46,14 @@ function FormUs() {
       description,
       category,
       top,
+      slug,
       image,
       stock,
     };
 
     const response = await axios({
       method: "post",
-      url: `${import.meta.env.VITE_API_URL}/admin/create/Product`,
+      url: `${import.meta.env.VITE_MAIN_URL}/admin/create/Product`,
       data: sendInfo,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -109,7 +112,7 @@ function FormUs() {
               />
             </Form.Group>
             <Form.Group controlId="top">
-              <Form.Label>Pop :</Form.Label>
+              <Form.Label>Top (si o no ):</Form.Label>
               <Form.Control
                 type="boolean"
                 value={top}
@@ -123,6 +126,15 @@ function FormUs() {
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="category">
+              <Form.Label>Slug :</Form.Label>
+              <Form.Control
+                type="text"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)}
                 required
               />
             </Form.Group>
