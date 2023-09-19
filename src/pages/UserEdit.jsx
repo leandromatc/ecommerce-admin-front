@@ -89,7 +89,6 @@ function UserEdit() {
               className="form-control"
               id="password"
               name="password"
-              value={""}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
