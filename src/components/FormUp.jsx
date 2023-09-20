@@ -71,7 +71,7 @@ function FormUp(item) {
   return (
     dataUser && (
       <div>
-        <MdEdit onClick={handleShow} />
+        <MdEdit className="action-icon" onClick={handleShow} />
 
         <Modal show={showModal} onHide={handleClose}>
           <Modal.Header closeButton>

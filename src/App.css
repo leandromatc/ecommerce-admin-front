@@ -146,3 +146,8 @@ select:focus {
   border: 1px solid var(--clr-primary);
   border-color: var(--clr-primary);
 }
+
+.img-thumbnail {
+  max-width: 150px;
+  border: none;
+}

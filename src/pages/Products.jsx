@@ -57,20 +57,20 @@ function Products() {
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Products</h2>
 
-          {<FormUs className="me-1" />}
+          {<FormUs />}
         </div>
-        <div className="row ms-4 chart">
-          <table className="table text-center border rounded shadow">
+        <div className="row ms-2 chart">
+          <table className="table text-center ">
             <thead>
               <tr>
-                <th scope="col-1">Image</th>
-                <th scope="col-1">Name</th>
-                <th scope="col-1">Price</th>
-                <th scope="col-1">Description</th>
-                <th scope="col-1">Category</th>
-                <th scope="col-1">Stock</th>
-                <th scope="col-1">Top</th>
-                <th scope="col-1">Slug</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Top</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -78,20 +78,22 @@ function Products() {
                 <tr key={id}>
                   <td>
                     <img
-                      className="img-fluid img-thumbnail"
+                      className="img-fluid img-thumbnail p-0"
                       src={`https://mcbzesritumxqjtbullp.supabase.co/storage/v1/object/public/products/${item.image}?//t=2023-09-19T13%3A20%3A01.474Z`}
                     />
                   </td>
                   <td className="col">{item.name}</td>
                   <td className="col">{item.price}</td>
-                  <td className="col">{item.description}</td>
+                  <td className="col">
+                    {item.description.substring(0, 20)}...
+                  </td>
                   <td className="col">{item.category}</td>
                   <td className="col">{item.stock}</td>
                   <td className="col">{item.top === true ? "SI" : "NO"}</td>
 
-                  <td className="col-1">
+                  <td className="col">
                     <AiFillDelete
-                      className="me-4 action-icon"
+                      className=" action-icon"
                       onClick={handleShow}
                     />
 
@@ -125,7 +127,7 @@ function Products() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button>Understood</Button>
+            <Button className="main-button">Understood</Button>
           </Modal.Footer>
         </Modal>
       </section>
