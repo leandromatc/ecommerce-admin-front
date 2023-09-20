@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import axios from "axios";
-//import fs from "fs";
 
 function FormUs() {
   const [showModal, setShowModal] = useState(false);
@@ -20,7 +19,6 @@ function FormUs() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log("Nombre:", name);
     console.log("Price:", price);
     console.log("Foto:", image);
@@ -53,7 +51,7 @@ function FormUs() {
 
     const response = await axios({
       method: "post",
-      url: `${import.meta.env.VITE_API_URL}}/admin/create/Product`,
+      url: `http://localhost:3000/admin/create/Product`,
       data: sendInfo,
       headers: {
         "Content-Type": "multipart/form-data",

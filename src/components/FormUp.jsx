@@ -35,10 +35,12 @@ function FormUp(item) {
     console.log("Top :", top);
     console.log("Image :", image);
     console.log("Stock :", stock);
-
     handleClose();
   };
 
+  const modifyPiture = (e) => {
+    setImage(e.target.files[0]);
+  };
   const handledInfo = async () => {
     const sendInfo = {
       id,
@@ -80,7 +82,7 @@ function FormUp(item) {
                   type="text"
                   value={name}
                   onChange={(e) =>
-                    setName(e.target.value === "" ? name : e.target.value)
+                    setName(e.target.value !== name ? e.target.value : name)
                   }
                 />
               </Form.Group>
@@ -91,7 +93,7 @@ function FormUp(item) {
                   type="number"
                   value={price}
                   onChange={(e) =>
-                    setPrice(e.target.value === "" ? price : e.target.value)
+                    setPrice(e.target.value !== price ? e.target.value : price)
                   }
                 />
               </Form.Group>
@@ -102,7 +104,9 @@ function FormUp(item) {
                   value={description}
                   onChange={(e) =>
                     setDescription(
-                      e.target.value === "" ? description : e.target.value
+                      e.target.value !== description
+                        ? e.target.value
+                        : description
                     )
                   }
                 />
@@ -113,7 +117,7 @@ function FormUp(item) {
                   type="text"
                   value={slug}
                   onChange={(e) =>
-                    setSlug(e.target.value === "" ? slug : e.target.value)
+                    setSlug(e.target.value !== slug ? e.target.value : slug)
                   }
                 />
               </Form.Group>
@@ -124,7 +128,7 @@ function FormUp(item) {
                   type=""
                   value={top}
                   onChange={(e) =>
-                    setTop(e.target.value === "" ? top : e.target.value)
+                    setTop(e.target.value !== top ? e.target.value : top)
                   }
                 />
               </Form.Group>
@@ -135,7 +139,7 @@ function FormUp(item) {
                   value={category}
                   onChange={(e) =>
                     setCategory(
-                      e.target.value === "" ? category : e.target.value
+                      e.target.value !== category ? e.target.value : category
                     )
                   }
                 />
@@ -146,7 +150,7 @@ function FormUp(item) {
                   type="number"
                   value={stock}
                   onChange={(e) =>
-                    setStock(e.target.value === "" ? stock : e.target.value)
+                    setStock(e.target.value !== stock ? e.target.value : stock)
                   }
                 />
               </Form.Group>
@@ -154,11 +158,13 @@ function FormUp(item) {
               <Form.Group controlId="image">
                 <Form.Label>Image :</Form.Label>
                 <Form.Control
-                  type="files"
-                  value={image}
-                  onChange={(e) => setImage(e.target.files[0])}
+                  type="file"
+                  onChange={modifyPiture}
+                  accept="imgs/product/*"
+                  required
                 />
               </Form.Group>
+
               <Button variant="primary" type="submit" onClick={handledInfo}>
                 Send
               </Button>
