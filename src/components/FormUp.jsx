@@ -56,7 +56,10 @@ function FormUp(item) {
     const response = await axios({
       method: "post",
       url: `${import.meta.env.VITE_API_URL}/admin/Product/${id}`,
-      data: { sendInfo },
+      data: sendInfo,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
     console.log(response.data);
   };
@@ -84,6 +87,7 @@ function FormUp(item) {
                   onChange={(e) =>
                     setName(e.target.value !== name ? e.target.value : name)
                   }
+                  required
                 />
               </Form.Group>
 
@@ -95,6 +99,7 @@ function FormUp(item) {
                   onChange={(e) =>
                     setPrice(e.target.value !== price ? e.target.value : price)
                   }
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="description">
@@ -109,6 +114,7 @@ function FormUp(item) {
                         : description
                     )
                   }
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="description">
@@ -119,6 +125,7 @@ function FormUp(item) {
                   onChange={(e) =>
                     setSlug(e.target.value !== slug ? e.target.value : slug)
                   }
+                  required
                 />
               </Form.Group>
 
@@ -130,6 +137,7 @@ function FormUp(item) {
                   onChange={(e) =>
                     setTop(e.target.value !== top ? e.target.value : top)
                   }
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="category">
@@ -142,6 +150,7 @@ function FormUp(item) {
                       e.target.value !== category ? e.target.value : category
                     )
                   }
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="stock ">
@@ -152,6 +161,7 @@ function FormUp(item) {
                   onChange={(e) =>
                     setStock(e.target.value !== stock ? e.target.value : stock)
                   }
+                  required
                 />
               </Form.Group>
 
@@ -161,7 +171,6 @@ function FormUp(item) {
                   type="file"
                   onChange={modifyPiture}
                   accept="imgs/product/*"
-                  required
                 />
               </Form.Group>
 
