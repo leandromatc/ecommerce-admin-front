@@ -20,8 +20,8 @@
   --clr-delivered-light: #e1f1d0;
   --clr-pending: #dbab52;
   --clr-pending-light: #fffadd;
-  --clr-cancelled: #d21312;
-  --clr-cancelled-light: #f8bfbf;
+  --clr-onitsway: #0e59a0;
+  --clr-onitsway-light: #9dc5eb;
   /* Font family */
   --font-family: "Inter", sans-serif;
   /* Transition default */
@@ -90,17 +90,17 @@ a {
   border-radius: 0.2rem;
   text-align: center;
 }
-.delivered {
+option[value="delivered"] {
   background-color: var(--clr-delivered-light);
   color: var(--clr-delivered);
 }
-.pending {
+option[value="pending"] {
   background-color: var(--clr-pending-light);
   color: var(--clr-pending);
 }
-.cancelled {
-  background-color: var(--clr-cancelled-light);
-  color: var(--clr-cancelled);
+option[value="on-its-way"] {
+  background-color: var(--clr-onitsway-light);
+  color: var(--clr-onitsway);
 }
 
 .content {
@@ -116,4 +116,33 @@ input:focus {
 
 .login-text {
   cursor: pointer;
+}
+
+select:focus {
+  box-shadow: none !important;
+  border-color: var(--clr-secondary) !important;
+  color: var(--clr-primary) !important;
+}
+
+.products-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem 0.2rem !important;
+  font-weight: 400 !important;
+  background-color: none;
+  border: 1px solid var(--clr-primary);
+  color: var(--clr-primary);
+  font-weight: 600;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: var(--transition-default);
+  margin-right: 2rem;
+}
+
+.products-btn:hover {
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary-light);
+  border: 1px solid var(--clr-primary);
+  border-color: var(--clr-primary);
 }
