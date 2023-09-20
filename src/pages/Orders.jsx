@@ -63,10 +63,11 @@ function Orders() {
               </tr>
             </thead>
             <tbody>
+              {console.log(orders)}
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.user}</td>
+                  <td>{order.user.email}</td>
                   <td>{format(new Date(order.createdAt), "MMMM dd, yyyy")}</td>
                   <td>
                     {" "}
