@@ -87,10 +87,10 @@ function Orders() {
                         handleStatusChange(event.target.value, order._id)
                       }
                     >
-                      <option value="pending">Pending</option>
-                      <option value="preparing">Preparing</option>
-                      <option value="on-its-way">On its way</option>
-                      <option value="delivered">Delivered</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Preparing">Preparing</option>
+                      <option value="On-its-way">On its way</option>
+                      <option value="Delivered">Delivered</option>
                     </Form.Select>
                   </td>
                 </tr>
