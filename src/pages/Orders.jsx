@@ -89,7 +89,7 @@ function Orders() {
                     >
                       <option value="Pending">Pending</option>
                       <option value="Preparing">Preparing</option>
-                      <option value="On-its-way">On its way</option>
+                      <option value="On its way">On its way</option>
                       <option value="Delivered">Delivered</option>
                     </Form.Select>
                   </td>
