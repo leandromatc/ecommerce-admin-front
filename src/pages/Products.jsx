@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Users.css";
 import axios from "axios";
-import {
-  AiFillPlusCircle,
-  AiFillMinusCircle,
-  AiFillDelete,
-} from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import FormUs from "../components/FormUs";
@@ -25,17 +21,6 @@ function Products() {
       url: `${import.meta.env.VITE_API_URL}/admin/Product/${productId}`,
     });
   };
-
-  const productAdd = async (productId) => {
-    await axios({
-      method: "get",
-      url: `${import.meta.env.VITE_API_URL}/admin/store/Product/${productId}`,
-    });
-  };
-
-  // const handleDelete = () => {
-  //   productDelete();
-  // };
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -78,26 +63,33 @@ function Products() {
           <table className="table text-center border rounded shadow">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-                <th scope="col"> Stock</th>
-                <th scope="col">Top</th>
-                <th scope="col">Slug</th>
+                <th scope="col-1">Image</th>
+                <th scope="col-1">Name</th>
+                <th scope="col-1">Price</th>
+                <th scope="col-1">Description</th>
+                <th scope="col-1">Category</th>
+                <th scope="col-1">Stock</th>
+                <th scope="col-1">Top</th>
+                <th scope="col-1">Slug</th>
               </tr>
             </thead>
             <tbody>
               {product.map((item, id) => (
                 <tr key={id}>
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
-                  <td>{item.description}</td>
-                  <td>{item.category}</td>
-                  <td>{item.stock}</td>
-                  <td>{item.top === true ? "SI" : "NO"}</td>
-                  <td>{item.slug}</td>
                   <td>
+                    <img
+                      className="img-fluid img-thumbnail"
+                      src={`https://mcbzesritumxqjtbullp.supabase.co/storage/v1/object/public/products/${item.image}?//t=2023-09-19T13%3A20%3A01.474Z`}
+                    />
+                  </td>
+                  <td className="col">{item.name}</td>
+                  <td className="col">{item.price}</td>
+                  <td className="col">{item.description}</td>
+                  <td className="col">{item.category}</td>
+                  <td className="col">{item.stock}</td>
+                  <td className="col">{item.top === true ? "SI" : "NO"}</td>
+
+                  <td className="col-1">
                     <AiFillDelete
                       className="me-4 action-icon"
                       onClick={handleShow}
@@ -111,15 +103,6 @@ function Products() {
                         item={item}
                       />
                     }
-
-                    <AiFillPlusCircle
-                      className="action-icon create-icon"
-                      onClick={() => productAdd(item._id)}
-                    />
-                    <AiFillMinusCircle
-                      className="action-icon delete-icon"
-                      onClick={() => productDelete(item._id)}
-                    />
                   </td>
                 </tr>
               ))}

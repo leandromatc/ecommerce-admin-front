@@ -7,3 +7,8 @@ crud  - productos
 jwt
 persistencia
 *** poner en el user algun <a link> para busacr ordenes  a futuro</a> 
+
+
+{// DIRECCION Para traer cosas de supabase 
+
+//https://mcbzesritumxqjtbullp.supabase.co/storage/v1/object/public/products/${variable}?//t=2023-09-19T13%3A20%3A01.474Z }
