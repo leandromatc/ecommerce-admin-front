@@ -43,12 +43,6 @@ function Orders() {
       <section id="users">
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Orders</h2>
-          <Link to={`new`}>
-            <button className=" main-button">
-              <AiOutlinePlusCircle className="me-1" />
-              New order
-            </button>
-          </Link>
         </div>
         <div className="row ms-4 chart">
           <table className="table">
@@ -72,13 +66,13 @@ function Orders() {
                   <td>
                     {" "}
                     <NavLink
-                      className="main-button"
+                      className="products-btn"
                       onClick={() => {
                         handleShow();
                         setSelectedCart(order.cart);
                       }}
                     >
-                      View order
+                      View products
                     </NavLink>
                     <ModalOrder
                       handleClose={handleClose}
