@@ -44,7 +44,7 @@ function Orders() {
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Orders</h2>
         </div>
-        <div className="row ms-4 chart">
+        <div className="row mx-4 chart">
           <table className="table">
             <thead>
               <tr>

@@ -15,7 +15,7 @@ function Login() {
     setEmail("admin@doppios.com");
   };
   const handlePassword = () => {
-    setPassword("admin");
+    setPassword("1234");
   };
 
   const handleSubmit = async (e) => {
@@ -75,7 +75,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="form-text login-text" onClick={handlePassword}>
-                Try: admin
+                Try: 1234
               </div>
             </div>
 

@@ -36,7 +36,7 @@ function Users() {
             </button>
           </Link>
         </div>
-        <div className="row ms-4 chart">
+        <div className="row mx-4 chart">
           <table className="table">
             <thead>
               <tr>

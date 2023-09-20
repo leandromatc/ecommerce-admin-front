@@ -59,7 +59,7 @@ function Products() {
 
           {<FormUs />}
         </div>
-        <div className="row ms-2 chart">
+        <div className="row mx-4 chart">
           <table className="table text-center ">
             <thead>
               <tr>
