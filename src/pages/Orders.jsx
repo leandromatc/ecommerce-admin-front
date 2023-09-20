@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import { useSelector } from "react-redux";
 
 function Orders() {
-  const [orders, setOrders] = useState(null);
+  const [orders, setOrders] = useState("");
   const [selectedCart, setSelectedCart] = useState(null);
   const [show, setShow] = useState(false);
   const admin = useSelector((state) => state.admin);
