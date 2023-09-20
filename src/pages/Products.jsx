@@ -68,7 +68,7 @@ function Products() {
 
   return (
     product && (
-      <section id="users">
+      <section id="products">
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Products</h2>
 

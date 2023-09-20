@@ -107,3 +107,13 @@ a {
   margin: 2rem;
   width: 100%;
 }
+
+input:focus {
+  box-shadow: none !important;
+  border-color: var(--clr-secondary) !important;
+  color: var(--clr-primary) !important;
+}
+
+.login-text {
+  cursor: pointer;
+}

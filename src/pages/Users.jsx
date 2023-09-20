@@ -29,8 +29,8 @@ function Users() {
       <section id="users">
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Users</h2>
-          <Link to={`new`}>
-            <button className=" main-button">
+          <Link to={`newUser`}>
+            <button className="main-button">
               <AiOutlinePlusCircle className="me-1" />
               New user
             </button>

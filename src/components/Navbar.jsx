@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   BiSolidDashboard,
   BiSolidPurchaseTag,
@@ -7,8 +7,18 @@ import {
   BiSolidUser,
   BiLogOut,
 } from "react-icons/bi";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/adminSlice";
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
   return (
     <aside className="nav-container">
       <div>
@@ -38,11 +48,17 @@ function Navbar() {
               Users
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to={`/admins`} className="nav-link">
+              <MdAdminPanelSettings className="nav-icon" />
+              Admins
+            </NavLink>
+          </li>
         </ul>
       </div>
 
       <div className="nav-logout">
-        <NavLink to={`/logout`} className="nav-link">
+        <NavLink className="nav-link" onClick={handleLogout}>
           <BiLogOut className="nav-icon" />
           Logout
         </NavLink>

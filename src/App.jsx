@@ -6,23 +6,26 @@ import Orders from "./pages/Orders";
 import Users from "./pages/Users";
 import Home from "./pages/Home";
 import ProductsAdmin from "./components/ProductsAdmin";
-import LoginAdmin from "./pages/LoginAdmin";
 import UserEdit from "./pages/UserEdit";
 import NewUser from "./pages/NewUser";
+import Login from "./pages/Login";
+import Admins from "./pages/Admins";
+import NewAdmin from "./pages/NewAdmin";
 
 function App() {
   return (
     <Routes>
+      <Route path="login" element={<Login />} />
       <Route path="/" element={<Home />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="products" element={<Products />} />
         <Route path="orders" element={<Orders />} />
         <Route path="users" element={<Users />} />
         <Route path="users/:user" element={<UserEdit />} />
-        <Route path="users/new" element={<NewUser />} />
-        <Route path="/admin" element={<LoginAdmin />} />
-        <Route path="/product" element={<ProductsAdmin />} />
-     
+        <Route path="users/newUser" element={<NewUser />} />
+        <Route path="admins" element={<Admins />} />
+        <Route path="admins/newAdmin" element={<NewAdmin />} />
+        <Route path="product" element={<ProductsAdmin />} />
       </Route>
     </Routes>
   );

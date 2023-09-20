@@ -64,7 +64,7 @@ function FormUs() {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className="main-button" onClick={handleShow}>
         <AiOutlinePlusCircle className="me-1" /> New Product
       </Button>
 
