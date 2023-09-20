@@ -66,7 +66,7 @@ function Orders() {
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.user.email}</td>
+                  <td>{order.userEmail}</td>
                   <td>{format(new Date(order.createdAt), "MMMM dd, yyyy")}</td>
                   <td>
                     {" "}
@@ -85,7 +85,7 @@ function Orders() {
                       cart={selectedCart}
                     />
                   </td>
-                  <td>{order.totalPrice}</td>
+                  <td>{order.totalPrice.toFixed(1)}</td>
                   <td>
                     <Form.Select
                       defaultValue={order.status}
