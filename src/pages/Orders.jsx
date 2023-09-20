@@ -57,7 +57,6 @@ function Orders() {
               </tr>
             </thead>
             <tbody>
-              {console.log(orders)}
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
