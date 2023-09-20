@@ -16,7 +16,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout(null));
     navigate("/login");
   };
   return (
@@ -57,8 +57,8 @@ function Navbar() {
         </ul>
       </div>
 
-      <div className="nav-logout">
-        <NavLink className="nav-link" onClick={handleLogout}>
+      <div className="nav-logout" onClick={handleLogout}>
+        <NavLink className="nav-link">
           <BiLogOut className="nav-icon" />
           Logout
         </NavLink>

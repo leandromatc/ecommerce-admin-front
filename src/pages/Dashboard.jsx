@@ -28,6 +28,9 @@ function Dashboard() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_API_URL}/products`,
+        headers: {
+          Authorization: "Bearer " + (admin && admin.token),
+        },
       });
       setProductsQuantity(response.data.products.length);
     };
@@ -35,6 +38,9 @@ function Dashboard() {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_API_URL}/orders`,
+        headers: {
+          Authorization: "Bearer " + (admin && admin.token),
+        },
       });
       setOrdersQuantity(response.data.length);
     };

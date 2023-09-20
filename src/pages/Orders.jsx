@@ -6,11 +6,13 @@ import { Link, NavLink } from "react-router-dom";
 import ModalOrder from "./ModalOrder";
 import Form from "react-bootstrap/Form";
 import { format } from "date-fns";
+import { useSelector } from "react-redux";
 
 function Orders() {
   const [orders, setOrders] = useState(null);
   const [selectedCart, setSelectedCart] = useState(null);
   const [show, setShow] = useState(false);
+  const admin = useSelector((state) => state.admin);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,6 +21,9 @@ function Orders() {
       method: "patch",
       url: `${import.meta.env.VITE_API_URL}/orders/${id}`,
       data: { status },
+      headers: {
+        Authorization: "Bearer " + (admin && admin.token),
+      },
     });
   };
 
@@ -62,11 +67,7 @@ function Orders() {
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.user}</td>
-                  <td>
-                    {format(new Date(order.createdAt), "MMMM dd, yyyy"
-                   
-                    )}
-                  </td>
+                  <td>{format(new Date(order.createdAt), "MMMM dd, yyyy")}</td>
                   <td>
                     {" "}
                     <NavLink
