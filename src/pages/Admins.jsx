@@ -15,14 +15,15 @@ function Admins() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    const getUsers = async () => {
+    const getAdmins = async () => {
       const response = await axios({
         method: "get",
         url: `${import.meta.env.VITE_API_URL}/admin`,
       });
+      console.log(response.data);
       setAdmins(response.data);
     };
-    getUsers();
+    getAdmins();
   }, []);
   return (
     admins && (
