@@ -27,12 +27,13 @@ function Dashboard() {
     const getProducts = async () => {
       const response = await axios({
         method: "GET",
-        url: `${import.meta.env.VITE_API_URL}/products`,
+        url: `${import.meta.env.VITE_API_URL}/products/filter/All`,
         headers: {
           Authorization: "Bearer " + (admin && admin.token),
         },
       });
-      setProductsQuantity(response.data.products.length);
+
+      setProductsQuantity(response.data.length);
     };
     const getOrders = async () => {
       const response = await axios({
