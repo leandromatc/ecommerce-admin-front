@@ -15,13 +15,6 @@ function Products() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const productDelete = async (productId) => {
-    await axios({
-      method: "delete",
-      url: `${import.meta.env.VITE_API_URL}/admin/Product/${productId}`,
-    });
-  };
-
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -30,14 +23,38 @@ function Products() {
     setModalIsOpen(false);
   };
 
-  // useEffect(() => {
-  //   productDelete();
-  // }, []);
   useEffect(() => {
     closeModal();
   }, []);
   useEffect(() => {
     openModal();
+  }, []);
+
+  const handledelete = async (item) => {
+    const response = await axios({
+      method: "delete",
+      url: `${import.meta.env.SUPABASE_URL}/storage/v1/object/product/${
+        item.image
+      }`,
+      headers: {
+        "Content-Type": "application/json",
+        apikey: `${import.meta.env.SUPABASE_KEY}`,
+      },
+    });
+    console.log(response.data);
+
+    const productDelete = async (item) => {
+      await axios({
+        method: "delete",
+        url: `${import.meta.env.VITE_API_URL}/admin/Product/${item.id}`,
+      });
+    };
+
+    productDelete(item);
+  };
+
+  useEffect(() => {
+    handledelete();
   }, []);
 
   useEffect(() => {
@@ -49,7 +66,7 @@ function Products() {
       setProduct(response.data);
     };
     getProduct();
-  }, [productDelete]);
+  }, []);
 
   return (
     product && (
@@ -93,6 +110,7 @@ function Products() {
 
                   <td className="col">
                     <AiFillDelete
+                      item={item}
                       className=" action-icon"
                       onClick={handleShow}
                     />
@@ -127,7 +145,9 @@ function Products() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button className="main-button">Understood</Button>
+            <Button className="main-button" onClick={handledelete()}>
+              Understood
+            </Button>
           </Modal.Footer>
         </Modal>
       </section>
