@@ -3,8 +3,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
+import { useNavigate } from "react-router";
+
 
 function FormDelete(item) {
+  const navigate = useNavigate();
   const [dataUser, setDataUser] = useState(item);
   const [showModal, setShowModal] = useState(false);
   const [id] = useState(dataUser.item._id);
@@ -17,12 +20,13 @@ function FormDelete(item) {
     setDataUser(item);
   }, [dataUser]);
 
-  async function handledelete(dataUser) {
-    console.log("vino item =>", image, id);
+  async function handleDelete(dataUser) {
+   handleClose();
     await axios({
       method: "delete",
       url: `http://localhost:3000/admin/Product/${id}/${image}`,
     });
+   navigate("/products");
   }
 
   return (
@@ -45,7 +49,7 @@ function FormDelete(item) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button className="main-button" onClick={handledelete}>
+          <Button className="main-button" onClick={handleDelete}>
             Understood
           </Button>
         </Modal.Footer>
