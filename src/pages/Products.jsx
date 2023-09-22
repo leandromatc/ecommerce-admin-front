@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 import "./Users.css";
 import axios from "axios";
-import { AiFillDelete } from "react-icons/ai";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import FormUs from "../components/FormUs";
 import FormUp from "../components/FormUp";
+import FormDelete from "../components/FormDelete";
 
 function Products() {
   const [product, setProduct] = useState(null);
-  const [show, setShow] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenDel, setModalIsOpenDel] = useState(false);
 
   const openModal = () => {
     setModalIsOpen(true);
   };
-
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  const openModalDel = () => {
+    setModalIsOpenDel(true);
+  };
+  const closeModalDel = () => {
+    setModalIsOpenDel(false);
   };
 
   useEffect(() => {
@@ -28,33 +30,6 @@ function Products() {
   }, []);
   useEffect(() => {
     openModal();
-  }, []);
-
-  const handledelete = async (item) => {
-    const response = await axios({
-      method: "delete",
-      url: `${import.meta.env.SUPABASE_URL}/storage/v1/object/product/${
-        item.image
-      }`,
-      headers: {
-        "Content-Type": "application/json",
-        apikey: `${import.meta.env.SUPABASE_KEY}`,
-      },
-    });
-    console.log(response.data);
-
-    const productDelete = async (item) => {
-      await axios({
-        method: "delete",
-        url: `${import.meta.env.VITE_API_URL}/admin/Product/${item.id}`,
-      });
-    };
-
-    productDelete(item);
-  };
-
-  useEffect(() => {
-    handledelete();
   }, []);
 
   useEffect(() => {
@@ -109,47 +84,25 @@ function Products() {
                   <td className="col">{item.top === true ? "SI" : "NO"}</td>
 
                   <td className="col">
-                    <AiFillDelete
+                    <FormDelete
+                      onClick={openModalDel}
+                      isOpen={modalIsOpenDel}
+                      onClose={closeModalDel}
                       item={item}
-                      className=" action-icon"
-                      onClick={handleShow}
                     />
 
-                    {
-                      <FormUp
-                        onClick={openModal}
-                        isOpen={modalIsOpen}
-                        onClose={closeModal}
-                        item={item}
-                      />
-                    }
+                    <FormUp
+                      onClick={openModal}
+                      isOpen={modalIsOpen}
+                      onClose={closeModal}
+                      item={item}
+                    />
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <Modal
-          show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Delete products</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>Are you sure?</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button className="main-button" onClick={handledelete()}>
-              Understood
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </section>
     )
   );

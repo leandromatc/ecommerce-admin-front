@@ -12,7 +12,7 @@ function FormUp(item) {
     setDataUser(item);
   }, [dataUser]);
 
-  const [id, setId] = useState(dataUser.item._id);
+  const [id] = useState(dataUser.item._id);
   const [name, setName] = useState(dataUser.item.name);
   const [price, setPrice] = useState(dataUser.item.price);
   const [description, setDescription] = useState(dataUser.item.description);
