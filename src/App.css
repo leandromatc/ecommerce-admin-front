@@ -151,3 +151,7 @@ select:focus {
   max-width: 150px;
   border: none;
 }
+.td-products{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

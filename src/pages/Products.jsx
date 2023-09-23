@@ -52,56 +52,58 @@ function Products() {
           {<FormUs />}
         </div>
         <div className="row mx-4 chart">
-          <table className="table text-center ">
-            <thead>
-              <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Top</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {product.map((item, id) => (
-                <tr key={id}>
-                  <td>
-                    <img
-                      className="img-fluid img-thumbnail p-0"
-                      src={`https://mcbzesritumxqjtbullp.supabase.co/storage/v1/object/public/products/${item.image}?//t=2023-09-19T13%3A20%3A01.474Z`}
-                    />
-                  </td>
-                  <td className="col">{item.name}</td>
-                  <td className="col">{item.price}</td>
-                  <td className="col">
-                    {item.description.substring(0, 20)}...
-                  </td>
-                  <td className="col">{item.category}</td>
-                  <td className="col">{item.stock}</td>
-                  <td className="col">{item.top === true ? "SI" : "NO"}</td>
-
-                  <td className="col">
-                    <FormDelete
-                      onClick={openModalDel}
-                      isOpen={modalIsOpenDel}
-                      onClose={closeModalDel}
-                      item={item}
-                    />
-
-                    <FormUp
-                      onClick={openModal}
-                      isOpen={modalIsOpen}
-                      onClose={closeModal}
-                      item={item}
-                    />
-                  </td>
+          <div className="table-responsive">
+            <table className="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Top</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {product.map((item, id) => (
+                  <tr key={id}>
+                    <td className="align-middle">
+                      <img
+                        className="img-fluid img-thumbnail p-0"
+                        src={`https://mcbzesritumxqjtbullp.supabase.co/storage/v1/object/public/products/${item.image}?//t=2023-09-19T13%3A20%3A01.474Z`}
+                      />
+                    </td>
+                    <td className="col align-middle">{item.name}</td>
+                    <td className="col align-middle">{item.price}</td>
+                    <td className="col align-middle td-products">
+                      {item.description.substring(0, 20)}...
+                    </td>
+                    <td className="col align-middle">{item.category}</td>
+                    <td className="col align-middle">{item.stock}</td>
+                    <td className="col align-middle">
+                      {item.top === true ? "SI" : "NO"}
+                    </td>
+                    <td className="col align-middle">
+                      <FormDelete
+                        onClick={openModalDel}
+                        isOpen={modalIsOpenDel}
+                        onClose={closeModalDel}
+                        item={item}
+                      />
+                      <FormUp
+                        onClick={openModal}
+                        isOpen={modalIsOpen}
+                        onClose={closeModal}
+                        item={item}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     )
