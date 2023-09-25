@@ -27,14 +27,6 @@ function FormUp(item) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("id:", id);
-    console.log("Nombre:", name);
-    console.log("Price :", price);
-    console.log("Description :", description);
-    console.log("Category :", category);
-    console.log("Top :", top);
-    console.log("Image :", image);
-    console.log("Stock :", stock);
     handleClose();
   };
 
@@ -54,14 +46,13 @@ function FormUp(item) {
     };
 
     const response = await axios({
-      method: "post",
-      url: `${import.meta.env.VITE_API_URL}/admin/Product/${id}`,
+      method: "patch",
+      url: `${import.meta.env.VITE_API_URL}/products/${id}`,
       data: sendInfo,
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(response.data);
   };
 
   useEffect(() => {

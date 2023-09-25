@@ -51,7 +51,7 @@ function FormUs() {
 
     const response = await axios({
       method: "post",
-      url: `http://localhost:3000/admin/create/Product`,
+      url: `${import.meta.env.VITE_API_URL}/products`,
       data: sendInfo,
       headers: {
         "Content-Type": "multipart/form-data",

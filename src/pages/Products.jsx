@@ -36,7 +36,7 @@ function Products() {
     const getProduct = async () => {
       const response = await axios({
         method: "get",
-        url: `${import.meta.env.VITE_API_URL}/admin/Product`,
+        url: `${import.meta.env.VITE_API_URL}/products/filter/All`,
       });
       setProduct(response.data);
     };

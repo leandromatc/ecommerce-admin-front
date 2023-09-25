@@ -23,9 +23,9 @@ function FormDelete(item) {
     handleClose();
     await axios({
       method: "delete",
-      url: `${import.meta.env.VITE_API_URL}/admin/Product/${id}/${image}`,
+      url: `${import.meta.env.VITE_API_URL}/products/${id}`,
+      data: { image },
     });
-    navigate("/products");
   }
 
   return (
