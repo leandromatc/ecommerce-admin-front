@@ -5,7 +5,6 @@ import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-
 function FormDelete(item) {
   const navigate = useNavigate();
   const [dataUser, setDataUser] = useState(item);
@@ -21,12 +20,12 @@ function FormDelete(item) {
   }, [dataUser]);
 
   async function handleDelete(dataUser) {
-   handleClose();
+    handleClose();
     await axios({
       method: "delete",
-      url: `http://localhost:3000/admin/Product/${id}/${image}`,
+      url: `${import.meta.env.VITE_API_URL}/admin/Product/${id}/${image}`,
     });
-   navigate("/products");
+    navigate("/products");
   }
 
   return (

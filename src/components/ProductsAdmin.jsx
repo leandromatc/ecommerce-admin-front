@@ -9,7 +9,7 @@ function ProductsAdmin() {
     const getProduct = async () => {
       const response = await axios({
         method: "get",
-        url: `http://localhost:3000/admin/products`,
+        url: `${import.meta.env.VITE_API_URL}/admin/products`,
         /* headers: {
           Authorization: "Bearer " + (user && user.token),
         }, */

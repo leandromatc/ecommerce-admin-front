@@ -11,15 +11,10 @@ function NewUser() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append("firstname", firstname);
-    // formData.append("lastname", lastname);
-    // formData.append("email", email);
-    // formData.append("password", password);
 
     await axios({
       method: "post",
-      url: "http://localhost:3000/users/",
+      url: `${import.meta.env.VITE_API_URL}/users/`,
       data: { firstname, lastname, email, password },
     });
     navigate("/users");

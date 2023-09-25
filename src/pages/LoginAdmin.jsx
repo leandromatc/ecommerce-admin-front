@@ -24,7 +24,7 @@ function LoginAdmin() {
     try {
       // Realiza la solicitud POST utilizando Axios
       const response = await axios.post(
-        "http://localhost:3000/admin/token",
+        `${import.meta.env.VITE_API_URL}/admin/token`,
         formData,
         {
           /* headers: {
