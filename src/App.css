@@ -151,7 +151,16 @@ select:focus {
   max-width: 150px;
   border: none;
 }
-.td-products{
+.td-products {
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.pending {
+  color: var(--clr-pending);
+  background-color: var(--clr-pending-light);
 }

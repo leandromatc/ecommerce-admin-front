@@ -44,58 +44,62 @@ function Orders() {
           <h2 className="fw-bold m-0">Orders</h2>
         </div>
         <div className="row mx-4 chart">
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">User</th>
-                <th scope="col">Date</th>
-                <th scope="col">Cart</th>
-                <th scope="col">Total price</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.userEmail}</td>
-                  <td>{format(new Date(order.createdAt), "MMMM dd, yyyy")}</td>
-                  <td>
-                    {" "}
-                    <NavLink
-                      className="products-btn"
-                      onClick={() => {
-                        handleShow();
-                        setSelectedCart(order.cart);
-                      }}
-                    >
-                      View products
-                    </NavLink>
-                    <ModalOrder
-                      handleClose={handleClose}
-                      show={show}
-                      cart={selectedCart}
-                    />
-                  </td>
-                  <td>{order.totalPrice.toFixed(1)}</td>
-                  <td>
-                    <Form.Select
-                      defaultValue={order.status}
-                      onChange={(event) =>
-                        handleStatusChange(event.target.value, order._id)
-                      }
-                    >
-                      <option value="Pending">Pending</option>
-                      <option value="Preparing">Preparing</option>
-                      <option value="On its way">On its way</option>
-                      <option value="Delivered">Delivered</option>
-                    </Form.Select>
-                  </td>
+          <div className="table-responsive">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Cart</th>
+                  <th scope="col">Total price</th>
+                  <th scope="col">Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.userEmail}</td>
+                    <td>
+                      {format(new Date(order.createdAt), "MMMM dd, yyyy")}
+                    </td>
+                    <td>
+                      {" "}
+                      <NavLink
+                        className="products-btn"
+                        onClick={() => {
+                          handleShow();
+                          setSelectedCart(order.cart);
+                        }}
+                      >
+                        View products
+                      </NavLink>
+                      <ModalOrder
+                        handleClose={handleClose}
+                        show={show}
+                        cart={selectedCart}
+                      />
+                    </td>
+                    <td>{order.totalPrice.toFixed(1)}</td>
+                    <td>
+                      <Form.Select
+                        defaultValue={order.status}
+                        onChange={(event) =>
+                          handleStatusChange(event.target.value, order._id)
+                        }
+                      >
+                        <option value="Pending">Pending</option>
+                        <option value="Preparing">Preparing</option>
+                        <option value="On its way">On its way</option>
+                        <option value="Delivered">Delivered</option>
+                      </Form.Select>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     )

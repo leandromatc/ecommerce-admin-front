@@ -14,10 +14,10 @@ function NewAdmin() {
 
     await axios({
       method: "post",
-      url: `${import.meta.env.VITE_API_URL}/admins`,
+      url: `${import.meta.env.VITE_API_URL}/admin`,
       data: { firstname, lastname, email, password },
     });
-    navigate("/users");
+    navigate("/admins");
   };
 
   return (

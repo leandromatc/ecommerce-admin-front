@@ -37,41 +37,43 @@ function Users() {
           </Link>
         </div>
         <div className="row mx-4 chart">
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Firstname</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">Email</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr key={user._id}>
-                  <td>{user._id}</td>
-                  <td>{user.firstname}</td>
-                  <td>
-                    {} {user.lastname}
-                  </td>
-                  <td>{user.email}</td>
-                  <td>
-                    <Link to={`/users/${user._id}`}>
-                      <MdEdit className="me-4 action-icon" />
-                    </Link>
-                    <AiFillDelete
-                      className="action-icon delete-icon"
-                      onClick={() => {
-                        handleShow();
-                        setId(user._id);
-                      }}
-                    />
-                  </td>
+          <div className="table-responsive">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Firstname</th>
+                  <th scope="col">Lastname</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={user._id}>
+                    <td>{user._id}</td>
+                    <td>{user.firstname}</td>
+                    <td>
+                      {} {user.lastname}
+                    </td>
+                    <td>{user.email}</td>
+                    <td>
+                      <Link to={`/users/${user._id}`}>
+                        <MdEdit className="me-4 action-icon" />
+                      </Link>
+                      <AiFillDelete
+                        className="action-icon delete-icon"
+                        onClick={() => {
+                          handleShow();
+                          setId(user._id);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
         <ModalDelete
           setShow={setShow}

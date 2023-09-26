@@ -5,6 +5,7 @@ import { AiFillDelete, AiOutlinePlusCircle } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 import ModalDelete from "./ModalDelete";
+import DeleteAdmin from "./DeleteAdmin";
 
 function Admins() {
   const [admins, setAdmins] = useState(null);
@@ -20,7 +21,6 @@ function Admins() {
         method: "get",
         url: `${import.meta.env.VITE_API_URL}/admin`,
       });
-      console.log(response.data);
       setAdmins(response.data);
     };
     getAdmins();
@@ -38,57 +38,59 @@ function Admins() {
           </Link>
         </div>
         <div className="row mx-4 chart">
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Firstname</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">Email</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {admins.map((user) => (
-                <tr key={user._id}>
-                  <td>{user._id}</td>
-                  <td>{user.firstname}</td>
-                  <td>
-                    {} {user.lastname}
-                  </td>
-                  <td>{user.email}</td>
-                  <td>
-                    <Link to={`/users/${user._id}`}>
-                      <MdEdit className="me-4 action-icon" />
-                    </Link>
-                    <AiFillDelete
-                      className="action-icon delete-icon"
-                      onClick={() => {
-                        handleShow();
-                        setId(user._id);
-                      }}
-                    />
-                  </td>
+          <div className="table-responsive">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Firstname</th>
+                  <th scope="col">Lastname</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Actions</th>
                 </tr>
-              ))}
-              <tr>
-                <td>00001</td>
-                <td>Admin</td>
-                <td>Test</td>
-                <td>admin@doppios.com</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {admins.map((user) => (
+                  <tr key={user._id}>
+                    <td>{user._id}</td>
+                    <td>{user.firstname}</td>
+                    <td>
+                      {} {user.lastname}
+                    </td>
+                    <td>{user.email}</td>
+                    <td>
+                      <Link to={`/admins/${user._id}`}>
+                        <MdEdit className="me-4 action-icon" />
+                      </Link>
+                      <AiFillDelete
+                        className="action-icon delete-icon"
+                        onClick={() => {
+                          handleShow();
+                          setId(user._id);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
+                <tr>
+                  <td>00001</td>
+                  <td>Admin</td>
+                  <td>Test</td>
+                  <td>admin@doppios.com</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        {/* <ModalDelete
-        setShow={setShow}
-        show={show}
-        handleClose={handleClose}
-        setUsers={setUsers}
-        users={users}
-        id={id}
-      /> */}
+        <DeleteAdmin
+          setShow={setShow}
+          show={show}
+          handleClose={handleClose}
+          setAdmins={setAdmins}
+          admins={admins}
+          id={id}
+        />
       </section>
     )
   );
