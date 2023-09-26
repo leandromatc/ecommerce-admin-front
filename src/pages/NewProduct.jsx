@@ -17,14 +17,6 @@ function NewProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Nombre:", name);
-    console.log("Price:", price);
-    console.log("Foto:", image);
-    console.log("description:", description);
-    console.log("Stock:", stock);
-    console.log("Stock:", category);
-    console.log("Top:", top);
-    console.log("Slug:", slug);
     sendInfo();
     navigate("/products");
   };
@@ -126,6 +118,7 @@ function NewProduct() {
             aria-label="Default select example"
             onChange={(event) => setTop(event.target.value)}
           >
+            <option selected>It's a top product?</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
@@ -139,6 +132,7 @@ function NewProduct() {
             aria-label="Default select example"
             onChange={(event) => setCategory(event.target.value)}
           >
+            <option selected>Choose the category:</option>
             <option value="Cafe">Cafe</option>
             <option value="Bakery">Bakery</option>
             <option value="Coffee beans">Coffee beans</option>
