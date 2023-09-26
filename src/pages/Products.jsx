@@ -52,7 +52,7 @@ function Products() {
           <Link to={`newProduct`}>
             <button className="main-button">
               <AiOutlinePlusCircle className="me-1" />
-              New user
+              New product
             </button>
           </Link>
         </div>
