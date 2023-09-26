@@ -111,7 +111,7 @@ function NewProduct() {
         </div>
         <div className="mb-3">
           <label htmlFor="top" className="form-label">
-            Producto destacado:
+            Top product
           </label>
           <select
             className="form-select"
@@ -132,7 +132,7 @@ function NewProduct() {
             aria-label="Default select example"
             onChange={(event) => setCategory(event.target.value)}
           >
-            <option selected>Choose the category:</option>
+            <option selected>Choose the category</option>
             <option value="Cafe">Cafe</option>
             <option value="Bakery">Bakery</option>
             <option value="Coffee beans">Coffee beans</option>
