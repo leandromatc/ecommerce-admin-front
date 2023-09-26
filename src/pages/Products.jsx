@@ -3,49 +3,33 @@ import "./Users.css";
 import axios from "axios";
 import FormUp from "../components/FormUp";
 import FormDelete from "../components/FormDelete";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import { AiFillDelete, AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { MdEdit } from "react-icons/md";
 
 function Products() {
-  const [product, setProduct] = useState(null);
+  const [products, setProducts] = useState(null);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalIsOpenDel, setModalIsOpenDel] = useState(false);
+  const [id, setId] = useState(null);
+  const [image, setImage] = useState(null);
+  const [show, setShow] = useState(false);
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-
-  const openModalDel = () => {
-    setModalIsOpenDel(true);
-  };
-  const closeModalDel = () => {
-    setModalIsOpenDel(false);
-  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
-    closeModal();
-  }, []);
-  useEffect(() => {
-    openModal();
-  }, []);
-
-  useEffect(() => {
-    const getProduct = async () => {
+    const getProducts = async () => {
       const response = await axios({
         method: "get",
         url: `${import.meta.env.VITE_API_URL}/products/filter/All`,
       });
-      setProduct(response.data);
+      setProducts(response.data);
     };
-    getProduct();
+    getProducts();
   }, []);
 
   return (
-    product && (
+    products && (
       <section id="products">
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Products</h2>
@@ -72,7 +56,7 @@ function Products() {
                 </tr>
               </thead>
               <tbody>
-                {product.map((item, id) => (
+                {products.map((item, id) => (
                   <tr key={id}>
                     <td className="align-middle">
                       <img
@@ -91,24 +75,38 @@ function Products() {
                       {item.top === true ? "SI" : "NO"}
                     </td>
                     <td className="col align-middle">
-                      <FormDelete
+                      <Link to={`/products/${item._id}`}>
+                        <MdEdit className="me-4 action-icon" />
+                      </Link>
+                      <AiFillDelete
+                        className="action-icon delete-icon"
+                        onClick={() => {
+                          handleShow();
+                          setId(item._id);
+                          setImage(item.image);
+                        }}
+                      />
+                      {/* <FormDelete
                         onClick={openModalDel}
                         isOpen={modalIsOpenDel}
                         onClose={closeModalDel}
                         item={item}
-                      />
-                      <FormUp
-                        onClick={openModal}
-                        isOpen={modalIsOpen}
-                        onClose={closeModal}
-                        item={item}
-                      />
+                      /> */}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <FormDelete
+            setShow={setShow}
+            show={show}
+            handleClose={handleClose}
+            setProducts={setProducts}
+            products={products}
+            id={id}
+            image={image}
+          />
         </div>
       </section>
     )

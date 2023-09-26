@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Admins from "./pages/Admins";
 import NewAdmin from "./pages/NewAdmin";
 import NewProduct from "./pages/NewProduct";
+import ProductEdit from "./pages/ProductEdit";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="products" element={<Products />} />
         <Route path="products/newProduct" element={<NewProduct />} />
+        <Route path="products/:product" element={<ProductEdit />} />
         <Route path="orders" element={<Orders />} />
         <Route path="users" element={<Users />} />
         <Route path="users/:user" element={<UserEdit />} />

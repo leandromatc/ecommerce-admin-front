@@ -153,7 +153,7 @@ function NewProduct() {
           />
         </div>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Default file input example</Form.Label>
+          <Form.Label>Upload an image</Form.Label>
           <Form.Control
             type="file"
             onChange={handleFotoChange}
