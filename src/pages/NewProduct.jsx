@@ -121,27 +121,29 @@ function NewProduct() {
           <label htmlFor="top" className="form-label">
             Producto destacado:
           </label>
-          <input
-            type="text"
-            name="top"
-            id="top"
-            className="form-control"
-            value={top}
+          <select
+            className="form-select"
+            aria-label="Default select example"
             onChange={(event) => setTop(event.target.value)}
-          />
+          >
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
         </div>
         <div className="mb-3">
           <label htmlFor="category" className="form-label">
             Category:
           </label>
-          <input
-            type="text"
-            name="category"
-            id="category"
-            className="form-control"
-            value={category}
+          <select
+            className="form-select"
+            aria-label="Default select example"
             onChange={(event) => setCategory(event.target.value)}
-          />
+          >
+            <option value="Cafe">Cafe</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Coffee beans">Coffee beans</option>
+            <option value="Cakes">Cakes</option>
+          </select>
         </div>
         <div className="mb-3">
           <label htmlFor="slug" className="form-label">
