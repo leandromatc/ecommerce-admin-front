@@ -11,6 +11,7 @@ import NewUser from "./pages/NewUser";
 import Login from "./pages/Login";
 import Admins from "./pages/Admins";
 import NewAdmin from "./pages/NewAdmin";
+import NewProduct from "./pages/NewProduct";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/" element={<Home />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="products" element={<Products />} />
+        <Route path="products/newProduct" element={<NewProduct />} />
         <Route path="orders" element={<Orders />} />
         <Route path="users" element={<Users />} />
         <Route path="users/:user" element={<UserEdit />} />

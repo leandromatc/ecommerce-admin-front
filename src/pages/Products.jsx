@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import "./Users.css";
 import axios from "axios";
-import FormUs from "../components/FormUs";
 import FormUp from "../components/FormUp";
 import FormDelete from "../components/FormDelete";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function Products() {
   const [product, setProduct] = useState(null);
@@ -48,8 +49,12 @@ function Products() {
       <section id="products">
         <div className="p-4 d-flex justify-content-between align-items-center">
           <h2 className="fw-bold m-0">Products</h2>
-
-          {<FormUs />}
+          <Link to={`newProduct`}>
+            <button className="main-button">
+              <AiOutlinePlusCircle className="me-1" />
+              New user
+            </button>
+          </Link>
         </div>
         <div className="row mx-4 chart">
           <div className="table-responsive">

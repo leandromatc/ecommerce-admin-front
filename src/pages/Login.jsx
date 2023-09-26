@@ -59,7 +59,7 @@ function Login() {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <div className="form-text login-text" onClick={handleEmail}>
-                Try: admin@doppios.com
+                Click here: admin@doppios.com
               </div>
             </div>
             <div className="mb-3">
@@ -75,7 +75,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="form-text login-text" onClick={handlePassword}>
-                Try: 1234
+                Click here: 1234
               </div>
             </div>
 
