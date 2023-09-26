@@ -11,14 +11,15 @@ import VisitorsChart from "../components/VisitorsChart";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { format } from "date-fns";
 
 function Dashboard() {
   const admin = useSelector((state) => state.admin);
   const navigate = useNavigate();
-  console.log(admin);
 
   const [productsQuantity, setProductsQuantity] = useState(null);
   const [ordersQuantity, setOrdersQuantity] = useState(null);
+  const [lastOrders, setLastOrders] = useState(null);
 
   useEffect(() => {
     if (!admin) {
@@ -45,12 +46,21 @@ function Dashboard() {
       });
       setOrdersQuantity(response.data.length);
     };
+    const getLastOrders = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_URL}/orders/last/orders`,
+      });
+      console.log(response.data);
+      setLastOrders(response.data.orders);
+    };
     getProducts();
     getOrders();
+    getLastOrders();
   }, [admin]);
 
   return (
-    productsQuantity && (
+    lastOrders && (
       <div className="dashboard">
         <div className="content">
           <div className="row header d-flex align-items-center">
@@ -72,7 +82,7 @@ function Dashboard() {
               <BiSolidDollarCircle className="statistics-icon" />
               <div>
                 <small>Total sales</small>
-                <h4 className="statistics-number">$1,120</h4>
+                <h4 className="statistics-number">$104,120</h4>
               </div>
             </div>
             <div className="col statistics-card">
@@ -109,42 +119,22 @@ function Dashboard() {
                   <th scope="col">id</th>
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Price</th>
                   <th scope="col">Order status</th>
                   <th scope="col">Date</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1234</td>
-                  <td>Ringo</td>
-                  <td>mail@mail.com</td>
-                  <td>$2,5</td>
-                  <td>
-                    <span className="btn-status delivered">Delivered</span>
-                  </td>
-                  <td>12.12.2023</td>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>John</td>
-                  <td>mail@mail.com</td>
-                  <td>$2,5</td>
-                  <td>
-                    <span className="btn-status cancelled">Cancelled</span>
-                  </td>
-                  <td>12.12.2023</td>
-                </tr>
-                <tr>
-                  <td>1234</td>
-                  <td>George</td>
-                  <td>mail@mail.com</td>
-                  <td>$2,5</td>
-                  <td>
-                    <span className="btn-status pending">Pending</span>
-                  </td>
-                  <td>12.12.2023</td>
-                </tr>
+                {lastOrders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.userEmail}</td>
+                    <td>
+                      {format(new Date(order.createdAt), "MMMM dd, yyyy")}
+                    </td>
+                    <td>{order.totalPrice.toFixed(1)}</td>
+                    <td>{order.status}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </section>
