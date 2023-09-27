@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import {
   BiSolidDollarCircle,
@@ -71,10 +71,12 @@ function Dashboard() {
               <small>This are the statistics for today!</small>
             </div>
             <div className="col-6 d-flex justify-content-end">
-              <button className="main-button">
-                <MdOutlineAddCircleOutline className="btn-icon" />
-                Add product
-              </button>
+              <Link to={"/products/newProduct"}>
+                <button className="main-button">
+                  <MdOutlineAddCircleOutline className="btn-icon" />
+                  Add product
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row statistics gap-3">
