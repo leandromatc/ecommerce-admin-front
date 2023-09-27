@@ -65,9 +65,8 @@ function Orders() {
                       {format(new Date(order.createdAt), "MMMM dd, yyyy")}
                     </td>
                     <td>
-                      {" "}
                       <NavLink
-                        className="products-btn"
+                        className="products-link"
                         onClick={() => {
                           handleShow();
                           setSelectedCart(order.cart);
