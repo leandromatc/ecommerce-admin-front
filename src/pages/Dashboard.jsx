@@ -120,7 +120,7 @@ function Dashboard() {
                 <tr>
                   <th scope="col">id</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Email</th>
+                  <th scope="col">Date</th>
                   <th scope="col">Price</th>
                   <th scope="col">Order status</th>
                 </tr>
