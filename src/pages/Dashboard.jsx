@@ -119,7 +119,7 @@ function Dashboard() {
               <thead>
                 <tr>
                   <th scope="col">id</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">User</th>
                   <th scope="col">Date</th>
                   <th scope="col">Price</th>
                   <th scope="col">Order status</th>
